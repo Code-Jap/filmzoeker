@@ -1,0 +1,35 @@
+#body {
+    background:rgb(6, 6, 44);
+    color: white;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+#heading {
+    text-align: center;
+    font-size: 50px;
+    margin: 60px 0px;
+}
+
+#search {
+    margin-left: 920px;
+}
+
+#nav {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#movies {
+    list-style: none;
+    margin: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
+}
+
+#movies li:hover {
+    
+    position: relative;
+    top: -10px;
+}
+
