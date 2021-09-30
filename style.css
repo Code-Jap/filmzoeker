@@ -25,11 +25,18 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 50px;
+    
 }
 
 #movies li:hover {
     
     position: relative;
     top: -10px;
+}
+
+#footer {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 600px;
 }
 

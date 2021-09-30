@@ -1,7 +1,10 @@
 
 const movieList = document.querySelector('#movies');
 
-const radioButtons = document.getElementsByName('movie')
+const radioButtons = document.getElementsByName('movie');
+
+const searchBar = document.querySelector('#search--bar')
+
 
 const addMoviesToDom = (movieArray) => {
 
@@ -30,15 +33,28 @@ addMoviesToDom(movies);
 
 
 
+searchBar.addEventListener('keyup', function(e) {
+
+   if (e.keyCode === 13) {
+   const input = e.target.value;
+   const filteredMovies = movies.filter(movie => {
+      return movie.Title.includes(input)
+   });
+
+   removeMoviesFromDom();
+   addMoviesToDom(filteredMovies);
+}
+})
+
 
 
 const addEventListeners = () => {
 
    radioButtons.forEach(button =>
       
-    button.addEventListener('change', function(event) {
+    button.addEventListener('change', function(e) {
 
-      handleOnChangeEvent(event);
+      handleOnChangeEvent(e);
      
    }));
 };
@@ -47,51 +63,39 @@ addEventListeners();
 
 
 
-handleOnChangeEvent = (event) => {
+handleOnChangeEvent = (e) => {
 
-   switch (event.target.value) {
+   switch (e.target.value) {
 
-      case "avengers":
-         filterMovies("Avengers")
-         console.log(filterMovies)
-         console.log('avengers')
-         break;
-      
-
-      case "x-men":
-        filterMovies('x-men')
-         break;
-      
-
-      case "princess":
-        filterMovies('princess')
-         break;
-      
-
-      case "batman":
-        filterMovies('batman')
+      case 'avengers':
+         filterMovies('Avengers');
          break;
 
-      case "newest":
+      case 'x-men':
+        filterMovies('X-Men');
+         break;
+   
+      case 'princess':
+        filterMovies('Princess');
+         break;
+
+      case 'batman':
+        filterMovies('Batman');
+         break;
+
+      case 'newest':
          filterLatestMovies();
-         console.log('latest')
-     
          break;
       
-
       default:
          console.log('default');
    };
-
-  // console.log(event.target)
 };
 
 
 
-
 const removeMoviesFromDom = () => {
-   const listItems = document.querySelectorAll("#movies")
-   listItems.forEach(item => item.remove())
+   movieList.innerHTML = '';
 };
 
 
@@ -111,11 +115,9 @@ addMoviesToDom(filteredMovies);
 const filterLatestMovies = () => {
 
    const latestMovies = movies.filter(movie => {
-     return parseInt(movie.year) >= 2014;
+     return parseInt(movie.Year) >= 2014;
    });
+   
    removeMoviesFromDom();
-   addMoviesToDom(latestMovies)
+   addMoviesToDom(latestMovies) 
 };
-
-
-
